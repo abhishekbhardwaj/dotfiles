@@ -1,3 +1,17 @@
+install_tmux_plugins() {
+    echo "Installing tmux plugins..."
+    # Start a temporary tmux session
+    tmux new-session -d -s __temp
+
+    # Install plugins
+    "$HOME/.tmux/plugins/tpm/bin/install_plugins"
+
+    # Kill the temporary tmux session
+    tmux kill-session -t __temp
+
+    echo "Tmux plugins have been installed."
+}
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
     if ! command -v brew &> /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -16,3 +30,4 @@ fi
 
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 tmux source "$HOME/.tmux.conf"
+install_tmux_plugins
