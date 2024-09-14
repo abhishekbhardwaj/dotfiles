@@ -23,7 +23,7 @@ install_homebrew_and_packages() {
     fi
 
     packages=(
-        zsh tmux curl stow zoxide bat ripgrep eza fzf
+        zsh tmux curl stow zoxide bat ripgrep eza fzf llm
         zsh-autosuggestions zsh-syntax-highlighting ngrok thefuck yt-dlp
     )
 
