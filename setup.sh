@@ -17,7 +17,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-    for pkg in zsh tmux curl stow zoxide bat ripgrep eza fzf; do
+    for pkg in zsh tmux curl stow zoxide bat ripgrep eza fzf zsh-autosuggestions zsh-syntax-highlighting; do
         if ! brew list --formula | grep -q "^${pkg}\$"; then
             brew install "$pkg"
         fi
@@ -28,6 +28,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
+echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+
+# Ensure the .tmux/plugins directory exists
+mkdir -p "$HOME/.tmux/plugins"
+
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 tmux source "$HOME/.tmux.conf"
+
 install_tmux_plugins
