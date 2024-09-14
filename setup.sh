@@ -17,7 +17,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-    for pkg in zsh tmux curl stow zoxide bat ripgrep fzf; do
+    for pkg in zsh tmux curl stow zoxide bat ripgrep eza fzf; do
         if ! brew list --formula | grep -q "^${pkg}\$"; then
             brew install "$pkg"
         fi
