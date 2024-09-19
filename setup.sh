@@ -25,7 +25,7 @@ install_homebrew_and_packages() {
     packages=(
         zsh tmux curl stow zoxide bat ripgrep eza fzf llm
         zsh-autosuggestions zsh-syntax-highlighting ngrok thefuck yt-dlp
-        gcc make unzip
+        gcc make unzip gh
     )
 
     for pkg in "${packages[@]}"; do
